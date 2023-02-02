@@ -2,6 +2,7 @@ package pathfinder
 
 import (
 	"fmt"
+	"log"
 	"pathfinder/internal"
 	"sync"
 )
@@ -154,8 +155,8 @@ func (pf *Pathfinderv7) find(startIndex, endIndex Index) *internal.Node {
 	pf.startNode.Parent = pf.startNode
 	pf.found = false
 
-	fmt.Println("startNode", pf.startNode.LatIdx, pf.startNode.LonIdx)
-	fmt.Println("endNode", pf.endNode.LatIdx, pf.endNode.LonIdx)
+	log.Println("startNode", pf.startNode.LatIdx, pf.startNode.LonIdx)
+	log.Println("endNode", pf.endNode.LatIdx, pf.endNode.LonIdx)
 
 	pf.startNode.GScore = pf.grid.Haversine(pf.startNode, pf.endNode)
 	pf.startNode.FScore = 0
@@ -236,7 +237,7 @@ func (pf *Pathfinderv7) find(startIndex, endIndex Index) *internal.Node {
 		break
 	}
 
-	fmt.Println("Start", c, "threads")
+	log.Println("Start", c, "threads")
 
 	wg.Wait()
 
@@ -291,9 +292,6 @@ func (pf *Pathfinderv7) removeCandidate(node *internal.Node) {
 }
 
 func (pf *Pathfinderv7) isVisible(currentNode, neighbour *internal.Node) bool {
-
-	//return pf.lineOfSight.lineOfSight(currentNode, neighbour, true, true)
-
 	lat1, lon1 := pf.grid.LatLon(currentNode)
 	lat2, lon2 := pf.grid.LatLon(neighbour)
 	return fillGreatCircle(lat1, lon1, lat2, lon2, pf.grid)

@@ -133,15 +133,12 @@ func (g *Grid) readBathymetry() {
 
 	bufr := bufio.NewReader(file)
 	_, err = bufr.Read(bytes)
-	//
 	if err != nil {
 		log.Fatalf("read buffer error: %v", err)
 	}
-	//
 	for i := 0; i < Width; i++ {
 		for j := 0; j < height; j++ {
 			g.bathymetry[i][j] = bytes[i*height+(height-j-1)]
-			//g.bathymetry[i][j] = bytes[i*height+j]
 		}
 	}
 }

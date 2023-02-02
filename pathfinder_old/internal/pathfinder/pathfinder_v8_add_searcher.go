@@ -241,10 +241,6 @@ func (s *searcher) removeCandidate(node *internal.Node) {
 }
 
 func (s *searcher) isVisible(currentNode, neighbour *internal.Node) bool {
-	//return false
-
-	//return pf.lineOfSight.lineOfSight(currentNode, neighbour, true, true)
-
 	lat1, lon1 := s.grid.LatLon(currentNode)
 	lat2, lon2 := s.grid.LatLon(neighbour)
 	return fillGreatCircle(lat1, lon1, lat2, lon2, s.grid)

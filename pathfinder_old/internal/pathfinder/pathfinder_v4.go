@@ -2,7 +2,7 @@ package pathfinder
 
 import (
 	"fmt"
-	"math"
+	"log"
 	"pathfinder/internal"
 	"sync"
 )
@@ -102,8 +102,8 @@ func (pf *Pathfinderv4) find(startIndex, endIndex Index) *internal.Node {
 	pf.startNode.Parent = pf.startNode
 	pf.found = false
 
-	fmt.Println("startNode", pf.startNode.LatIdx, pf.startNode.LonIdx)
-	fmt.Println("endNode", pf.endNode.LatIdx, pf.endNode.LonIdx)
+	log.Println("startNode", pf.startNode.LatIdx, pf.startNode.LonIdx)
+	log.Println("endNode", pf.endNode.LatIdx, pf.endNode.LonIdx)
 
 	pf.startNode.GScore = pf.grid.Haversine(pf.startNode, pf.endNode)
 	pf.startNode.FScore = 0
@@ -119,7 +119,7 @@ func (pf *Pathfinderv4) find(startIndex, endIndex Index) *internal.Node {
 		}
 	}
 
-	fmt.Println("Start", c, "threads")
+	log.Println("Start", c, "threads")
 
 	wg.Wait()
 
@@ -177,107 +177,6 @@ func (pf *Pathfinderv4) isVisible(currentNode, neighbour *internal.Node) bool {
 	lat1, lon1 := pf.grid.LatLon(currentNode)
 	lat2, lon2 := pf.grid.LatLon(neighbour)
 	return fillGreatCircle(lat1, lon1, lat2, lon2, pf.grid)
-}
-
-func fillGreatCircle(lat1, lon1, lat2, lon2 float64, grid *internal.Grid) bool {
-	// AVG_EARTH_RADIUS_NM = 3440.0707986216
-	step := grid.Step
-
-	cos_lat1 := math.Cos(lat1)
-	sin_lat1 := math.Sin(lat1)
-	cos_lon1 := math.Cos(lon1)
-	sin_lon1 := math.Sin(lon1)
-
-	cos_lat2 := math.Cos(lat2)
-	sin_lat2 := math.Sin(lat2)
-	cos_lon2 := math.Cos(lon2)
-	sin_lon2 := math.Sin(lon2)
-
-	d := math.Acos(sin_lat1*sin_lat2 + cos_lat1*cos_lat2*math.Cos(lon1-lon2))
-	sind := math.Sin(d)
-	if sind == 0 {
-		d += 1e-9
-	}
-
-	cos_lat1_cos_lon1 := cos_lat1 * cos_lon1
-	cos_lat1_sin_lon1 := cos_lat1 * sin_lon1
-	cos_lat2_cos_lon2 := cos_lat2 * cos_lon2
-	cos_lat2_sin_lon2 := cos_lat2 * sin_lon2
-
-	step /= d
-
-	getGCLatLon := func(f float64) (float64, float64) {
-		a := math.Sin((1 - f) * d)
-		b := math.Sin(f * d)
-		x := a*cos_lat1_cos_lon1 + b*cos_lat2_cos_lon2
-		y := a*cos_lat1_sin_lon1 + b*cos_lat2_sin_lon2
-		z := a*sin_lat1 + b*sin_lat2
-		lat := math.Atan2(z, math.Pow(math.Pow(x, 2)+math.Pow(y, 2), 0.5))
-		lon := math.Atan2(y, x)
-		return lat, lon
-	}
-
-	//N := int(1 / step)
-
-	//if N < 50 {
-	for f := step; f <= 1+1e-9; f += step {
-		lat, lon := getGCLatLon(f)
-		latIdx := grid.BisecLat(lat)
-		lonIdx := grid.BisecLon(lon)
-
-		if !grid.IsTraversable(lonIdx, latIdx) {
-			return false
-		}
-
-		if f > step {
-			prevLat, prevLon := getGCLatLon(f - step)
-			prevLatIdx := grid.BisecLat(prevLat)
-			prevLonIdx := grid.BisecLon(prevLon)
-
-			if !internal.TraversableSegmentOnPlane(lonIdx, latIdx, prevLonIdx, prevLatIdx, grid) {
-				return false
-			}
-		}
-	}
-
-	return true
-	//}
-
-	//var wg sync.WaitGroup
-	//nonTraversablePoints := 0
-	//
-	//for f:=step;f<=1+1e-9;f+=step {
-	//	wg.Add(1)
-	//	go func(wg *sync.WaitGroup, f float64) {
-	//		defer wg.Done()
-	//
-	//		lat, lon := getGCLatLon(f)
-	//		latIdx := grid.BisecLat(lat)
-	//		lonIdx := grid.BisecLon(lon)
-	//
-	//		if !grid.IsTraversable(lonIdx, latIdx) {
-	//			nonTraversablePoints++
-	//		}
-	//
-	//		if nonTraversablePoints > 0 {
-	//			return
-	//		}
-	//
-	//		if f > step {
-	//			prevLat, prevLon := getGCLatLon(f-step)
-	//			prevLatIdx := grid.BisecLat(prevLat)
-	//			prevLonIdx := grid.BisecLon(prevLon)
-	//
-	//			if !traversableSegmentOnPlane(lonIdx, latIdx, prevLonIdx, prevLatIdx, grid) {
-	//				nonTraversablePoints++
-	//			}
-	//		}
-	//	}(&wg, f)
-	//}
-	//
-	//wg.Wait()
-	//
-	//return nonTraversablePoints == 0
 }
 
 func hasCandidate(candidateWeights map[*internal.Node]float64, node *internal.Node) bool {

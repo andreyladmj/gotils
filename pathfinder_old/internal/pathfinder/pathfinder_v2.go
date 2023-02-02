@@ -1,7 +1,6 @@
 package pathfinder
 
 import (
-	"fmt"
 	"log"
 	"pathfinder/internal"
 )
@@ -38,8 +37,8 @@ func (pf *Pathfinderv2) find(startIndex, endIndex Index) *internal.Node {
 
 	pf.startNode.Parent = pf.startNode
 
-	fmt.Println("startNode", pf.startNode.LatIdx, pf.startNode.LonIdx)
-	fmt.Println("endNode", pf.endNode.LatIdx, pf.endNode.LonIdx)
+	log.Println("startNode", pf.startNode.LatIdx, pf.startNode.LonIdx)
+	log.Println("endNode", pf.endNode.LatIdx, pf.endNode.LonIdx)
 
 	pf.startNode.GScore = pf.grid.Haversine(pf.startNode, pf.endNode)
 	pf.startNode.FScore = 0
@@ -60,7 +59,6 @@ func (pf *Pathfinderv2) find(startIndex, endIndex Index) *internal.Node {
 			continue
 		}
 
-		//fmt.Println("currentNode", currentNode.LatIdx, currentNode.LonIdx, "heap size", heap.heapSize, "visited", currentNode.Visited)
 		currentNode.Visited = true
 		parent := currentNode.Parent
 
@@ -86,7 +84,6 @@ func (pf *Pathfinderv2) find(startIndex, endIndex Index) *internal.Node {
 			}
 
 			if neighbour.LatIdx == pf.endNode.LatIdx && neighbour.LonIdx == pf.endNode.LonIdx {
-				//pf.endNode = neighbour
 				pf.endNode = currentNode
 				stop = true
 				break

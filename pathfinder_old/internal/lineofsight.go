@@ -36,7 +36,6 @@ func (los *LineOfSightChecking) LineOfSight(startNode, endNode *Node, sourceIsCe
 	slatIdx, slonIdx := startNode.LatIdx, startNode.LonIdx
 	elatIdx, elonIdx := endNode.LatIdx, endNode.LonIdx
 
-	//prev_ts = ts
 	prevLat := slat
 	prevLatIdx, prevLonIdx := slatIdx, slonIdx
 
@@ -51,7 +50,6 @@ func (los *LineOfSightChecking) LineOfSight(startNode, endNode *Node, sourceIsCe
 
 			prevLat = p.lat
 			prevLatIdx = p.latIdx
-			//prev_ts += delta
 		}
 	} else {
 		cellSlon := los.grid.Longitudes[slonIdx]
@@ -90,7 +88,6 @@ func (los *LineOfSightChecking) LineOfSight(startNode, endNode *Node, sourceIsCe
 
 				_lat = pLat.lat
 				_lon = ilon
-				//prev_ts += delta
 			}
 
 			var lat_dir bool
@@ -166,14 +163,8 @@ func genLons(slon, elon float64, slonIdx, elonIdx int, sourceIsCell, targetIsCel
 				}
 			}
 
-			if !targetIsCell {
-				//yield elon, cell_lon, slon_idx
-			}
-
 		} else {
 			rotate = false
-			//if not source_is_cell and not target_is_cell:
-			//	slon -= slon % delta
 
 			for (slonIdx >= 0 && !rotate) || (slonIdx > elonIdx && rotate) {
 				lonPoints = append(lonPoints, genLonPoint{
@@ -190,8 +181,6 @@ func genLons(slon, elon float64, slonIdx, elonIdx int, sourceIsCell, targetIsCel
 				}
 			}
 
-			//if not target_is_cell:
-			//	yield elon, slon, slon_idx
 		}
 	} else {
 		if lonDir {

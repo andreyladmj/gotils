@@ -1,7 +1,6 @@
 package pathfinder
 
 import (
-	"fmt"
 	"log"
 	"pathfinder/internal"
 )
@@ -25,8 +24,8 @@ func (pf *Pathfinder) find(startIndex, endIndex Index) *internal.Node {
 	startNode := pf.WorldMap.GetNode(startIndex.LatIdx, startIndex.LonIdx)
 	endNode := pf.WorldMap.GetNode(endIndex.LatIdx, endIndex.LonIdx)
 
-	fmt.Println("startNode", startNode.LatIdx, startNode.LonIdx)
-	fmt.Println("endNode", endNode.LatIdx, endNode.LonIdx)
+	log.Println("startNode", startNode.LatIdx, startNode.LonIdx)
+	log.Println("endNode", endNode.LatIdx, endNode.LonIdx)
 
 	startNode.GScore = pf.grid.Haversine(startNode, endNode)
 	startNode.FScore = 0
@@ -48,7 +47,6 @@ func (pf *Pathfinder) find(startIndex, endIndex Index) *internal.Node {
 			continue
 		}
 
-		//fmt.Println("currentNode", currentNode.LatIdx, currentNode.LonIdx, "heap size", heap.heapSize, "visited", currentNode.Visited)
 		currentNode.Visited = true
 
 		for _, neighbour := range pf.WorldMap.GetNeighbours(currentNode) {
