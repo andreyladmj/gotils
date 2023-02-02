@@ -1,0 +1,36 @@
+
+canada
+latitude = 48.43254
+longitude = -89.21899
+
+black sea
+latitude = 43.60967
+longitude = 51.22023
+
+japan
+latitude = 35.92849
+longitude = 140.68824
+
+new zeland
+latitude = -19.53236
+longitude = 169.26580
+
+africa
+latitude = -17.29381
+longitude = 38.13973
+
+africa 2
+latitude = 21.46388
+longitude = 39.17029
+
+brasil
+latitude = -0.61084
+longitude = -80.42418
+
+turkish
+latitude = 35.32798
+longitude = 33.99319
+
+belarus
+latitude = 57.04010
+longitude = 24.07700

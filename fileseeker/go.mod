@@ -4,7 +4,6 @@ go 1.19
 
 require (
 	github.com/faiface/pixel v0.10.0
-	github.com/hajimehoshi/ebiten/v2 v2.4.15
 	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/viper v1.14.0
@@ -12,16 +11,13 @@ require (
 )
 
 require (
-	github.com/ebitengine/purego v0.0.0-20220905075623-aeed57cda744 // indirect
 	github.com/faiface/glhf v0.0.0-20181018222622-82a6317ac380 // indirect
 	github.com/faiface/mainthread v0.0.0-20171120011319-8b78f0a41ae3 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-gl/gl v0.0.0-20190320180904-bf2b1f2f34d7 // indirect
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20220806181222-55e207c401ad // indirect
 	github.com/go-gl/mathgl v0.0.0-20190416160123-c4601bc793c7 // indirect
-	github.com/hajimehoshi/file2byteslice v0.0.0-20210813153925-5340248a8f41 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
-	github.com/jezek/xgb v1.0.1 // indirect
 	github.com/magiconair/properties v1.8.6 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/pelletier/go-toml v1.9.5 // indirect
@@ -31,8 +27,6 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
-	golang.org/x/exp v0.0.0-20200224162631-6cc2880d07d6 // indirect
-	golang.org/x/mobile v0.0.0-20220722155234-aaac322e2105 // indirect
 	golang.org/x/sys v0.0.0-20220908164124-27713097b956 // indirect
 	golang.org/x/text v0.4.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
