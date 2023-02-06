@@ -1,0 +1,49 @@
+```
+----RealtekAPO2_1042 (3 files):
+-----RealtekAPO2.inf 0.042Mb
+-----RltkAPOU642.dll 7.562Mb
+-----realtekapo2.cat 0.078Mb
+----RealtekAPO_1042 (3 files):
+-----RealtekAPO.inf 0.037Mb
+-----RltkAPOU64.dll 7.131Mb
+-----realtekapo.cat 0.074Mb
+----RealtekASIO_8 (4 files):
+-----RTHDASIO.dll 0.222Mb
+-----RTHDASIO64.dll 0.265Mb
+-----RealtekASIO.inf 0.003Mb
+-----realtekasio.cat 0.012Mb
+----RealtekHSA_271 (2 files):
+-----RealtekHSA.inf 0.001Mb
+-----realtekhsa.cat 0.012Mb
+----RealtekINTAPO2_1042 (3 files):
+-----RealtekINTAPO2.inf 0.042Mb
+-----RtkIntU642.dll 7.565Mb
+-----realtekintapo2.cat 0.078Mb
+----RealtekService_514 (9 files):
+-----RealtekService.inf 0.027Mb
+-----RtCOM64.dll 1.090Mb
+-----RtDataProc64.dll 0.447Mb
+-----RtkApi64U.dll 0.867Mb
+-----RtkAudUService64.exe 3.318Mb
+-----RtkAudUServiceConf64.dll 0.049Mb
+-----RtkAudUServiceRes64.dll 2.013Mb
+-----RtkCfg64.dll 0.215Mb
+-----realtekservice.cat 0.028Mb
+----RealtekSstPpDll2_27 (3 files):
+-----RTKSpeechPP2_2.dll 3.911Mb
+-----RealtekSstPpDll2.inf 0.002Mb
+-----realteksstppdll2.cat 0.046Mb
+----RealtekSstPpDll_27 (4 files):
+-----RTKSpeechPP.dll 3.717Mb
+-----RTKSpeechPP2.dll 3.718Mb
+-----RealtekSstPpDll.inf 0.002Mb
+-----realteksstppdll.cat 0.077Mb
+---RtEventLog.dll 0.019Mb
+---hdxrt.cat 1.787Mb
+--data1.cab 5.871Mb
+--data1.hdr 0.044Mb
+--layout.bin 0.001Mb
+--setup.ini 0.005Mb
+--setup.inx 0.542Mb
+--setup.isn 0.248Mb
+```

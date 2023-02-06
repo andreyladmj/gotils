@@ -24,13 +24,15 @@ func (cl *CommandLine) Render(dir *system.File) {
 	cl.printDir(dir, "-")
 }
 
-func (cl *CommandLine) printDir(dir *system.File, tab string) {
-	fmt.Println(tab+dir.Name, Format(float64(dir.Size), "mb"), "Mb")
+func (cl *CommandLine) printDir(file *system.File, tab string) {
+	if file.IsDir {
+		fmt.Println(tab+file.Name, fmt.Sprintf("(%d files):", len(file.Files)))
 
-	if dir.IsDir {
-		for _, file := range dir.Files {
+		for _, file := range file.Files {
 			cl.printDir(file, tab+"-")
 		}
+	} else {
+		fmt.Println(tab+file.Name, fmt.Sprintf("%.3fMb", Format(float64(file.Size), "mb")))
 	}
 }
 

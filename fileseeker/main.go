@@ -24,9 +24,6 @@ func init() {
 }
 
 func main() {
-
-}
-func main1() {
 	_, err := env.ReadOS()
 	if err != nil {
 		log.Fatal("config read error:", err)
@@ -34,8 +31,8 @@ func main1() {
 
 	fmt.Println("basepath: ", os.Args[1])
 
-	displayer := flag.String("display", "starfield", "starfield or cmd")
-	minSize := flag.String("min-size", "100Mb", "1Kb, 1Mb, 1Gb, default: 100Mb")
+	displayer := flag.String("display", "cmd", "starfield or cmd")
+	minSize := flag.String("min-size", "1Kb", "1Kb, 1Mb, 1Gb, default: 1Kb")
 	flag.Parse()
 
 	filters := &internal.Filters{}
