@@ -1,4 +1,5 @@
-// //go:build unix
+//go:build unix
+
 package scanners
 
 import (
