@@ -1,1 +1,1 @@
-# Gotils is kind of monorepo with different subprojects
+# Gotils contains different subprojects
