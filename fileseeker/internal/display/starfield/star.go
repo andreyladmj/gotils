@@ -98,6 +98,7 @@ func (s *Star) DrawLinesToChilds(win *pixelgl.Window) {
 		imd.Draw(win)
 	}
 }
+
 func (s *Star) DrawLineToParent(win *pixelgl.Window) {
 	f := pixel.V(s.x, s.y)
 	t := pixel.V(s.parent.x, s.parent.y)
