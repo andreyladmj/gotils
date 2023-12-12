@@ -1,4 +1,4 @@
-# Pathfinder between two points in water on the world map
+# Find path between two points in the water on the world map
 
 It uses Theta* algorithm for finding path on the great circle
 
