@@ -1,0 +1,18 @@
+[START]
+donde - где
+ahora - сейчас
+ausencia - отсутствие
+desprete - проснуться
+es - быть
+alegre - весёлый
+igualmente - одинаково
+bienvenido - добро пожаловать
+por favor - пожалуйста
+buenos días - доброе утро
+buenas tardes - добрый день
+buenas noches - спокойной ночи
+de nada - пожалуйста
+nombre - имя
+tener - иметь
+comida - еда
+[END]
